@@ -1,4 +1,4 @@
-package chess_project;
+package application;
 
 public class Application {
 
