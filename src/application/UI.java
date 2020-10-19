@@ -50,10 +50,13 @@ public class UI {
 	
 	public static void printMatch(ChessMatch chessMatch,List<ChessPiece> capturedPieces) {
 		printBoard(chessMatch.getPieces());
+		System.out.println();
+		printCapturedPieces(capturedPieces);
+		System.out.println();
 		System.out.println("Turn: " + chessMatch.getTurn());
 		System.out.println("Waiting player: "+ chessMatch.getCurrentPlayer());
 		System.out.println();
-		printCapturedPieces(capturedPieces);
+		if(chessMatch.getCheck()) System.out.println("CHECK!");
 	}
 	
 	public static void printBoard(ChessPiece[][] pieces) {
@@ -101,14 +104,9 @@ public class UI {
 		List<ChessPiece> black = captured.stream().filter(x -> x.getColor() == Color.BLACK).collect(Collectors.toList());
 		System.out.println("Captured Pieces: ");
 		System.out.print("White: ");
-		System.out.print(ANSI_WHITE);
-		System.out.println(Arrays.toString(white.toArray()));
-		System.out.print(ANSI_RESET);
-		System.out.print("BLACK: ");
-		System.out.print(ANSI_YELLOW);
-		System.out.println(Arrays.toString(black.toArray()));
-		System.out.print(ANSI_RESET);
-		
+		System.out.println(ANSI_WHITE + Arrays.toString(white.toArray()) + ANSI_RESET);
+		System.out.print("Black: ");
+		System.out.println(ANSI_YELLOW + Arrays.toString(black.toArray()) + ANSI_RESET);
 	}
 	
 	public static void clearScreen() {
