@@ -45,6 +45,10 @@ public class Application {
 				if(chessMatch.getPromoted() != null) {
 					System.out.println("Enter piece for promotion (Q,k,R,B)");
 					String type = sc.nextLine();
+					while(!type.equals("B") && !type.equals("k") && !type.equals("R") && !type.equals("Q")) {
+						System.out.println("Invalid Value! Enter piece for promotion (Q,k,R,B)");
+						type = sc.nextLine();
+					}
 					chessMatch.replacePromotedPiece(type);
 				}
 			}
